@@ -23,18 +23,18 @@ export class TestServicesService {
                 return {
                     id: doc.payload.doc.id,
                     // ...doc.payload.doc.data()
-                    //name: doc.payload.doc.data().name,
-                    //duration: doc.payload.doc.data().duration,
-                    //calories: doc.payload.doc.data().calories
+                    // name: doc.payload.doc.data().name,
+                    // duration: doc.payload.doc.data().duration,
+                    // calories: doc.payload.doc.data().calories
                 };
             });
         })
-    )
+    );
     // .subscribe((exercises: Exercise[]) => {
     //    this.availableExercises = exercises;
     //    this.exercisesChanged.next([...this.availableExercises]);
-    //}/* , error => {
+    // }/* , error => {
     //    // console.log(error);
-    //} */));
+    // } */));
   }
 }

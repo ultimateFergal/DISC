@@ -1,9 +1,11 @@
-mat-sidenav-container, mat-sidenav-content, mat-sidenav {
-    height: 100%;
+mat-toolbar {
+    box-shadow: 1px 5px 20px rgba(0, 0, 0, 0.7);
 }
 
-mat-sidenav {
-    width: 250px;   
+.topbar {
+    position: relative;
+    /* Make sure the toolbar will stay on top of the content as it scrolls past. */
+    z-index: 2;
 }
 
 a { 
