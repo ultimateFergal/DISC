@@ -5,12 +5,12 @@
 export const environment = {
   production: false,
   firebase: {
-    apiKey: "AIzaSyBb12nE-FsJO8xJskXvx2FXYo19CT6QSkM",
-    authDomain: "disckhacku.firebaseapp.com",
-    databaseURL: "https://disckhacku.firebaseio.com",
-    projectId: "disckhacku",
-    storageBucket: "disckhacku.appspot.com",
-    messagingSenderId: "853763507502"
+    apiKey: 'AIzaSyBb12nE-FsJO8xJskXvx2FXYo19CT6QSkM',
+    authDomain: 'disckhacku.firebaseapp.com',
+    databaseURL: 'https://disckhacku.firebaseio.com',
+    projectId: 'disckhacku',
+    storageBucket: 'disckhacku.appspot.com',
+    messagingSenderId: '853763507502'
   }
 
 };

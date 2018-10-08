@@ -9,17 +9,32 @@ import { Subscription } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class TestServicesService {
+export class TestService {
+
+    private questions: any[]
+    private fbSubs: Subscription[] = [];
 
   constructor(private db: AngularFirestore) { }
 
   fetchQuestions() {
-    this.db
+      console.log('fuck');
+    this.fbSubs.push(this.db
     .collection('questionsBank')
     .snapshotChanges()
     .pipe(
         map(docArray => {
+            console.log('docArray');
+            console.log(docArray);
             return docArray.map(doc => {
+                console.log('doc');
+                console.log(doc);
+                console.log('doc.payload');
+                console.log(doc.payload);
+                console.log('doc.payload.doc');
+                console.log(doc.payload.doc);
+                console.log(doc.payload.doc.id);
+                console.log(doc.payload.doc.data());
+                console.log(doc.payload.doc.data().options);
                 return {
                     id: doc.payload.doc.id,
                     // ...doc.payload.doc.data()
@@ -29,12 +44,14 @@ export class TestServicesService {
                 };
             });
         })
-    );
-    // .subscribe((exercises: Exercise[]) => {
-    //    this.availableExercises = exercises;
+    )
+    .subscribe((exercises: any[]) => {
+        this.questions = exercises;
+        console.log('this.questions');
+        console.log(this.questions);
     //    this.exercisesChanged.next([...this.availableExercises]);
-    // }/* , error => {
-    //    // console.log(error);
-    // } */));
+    }/* , error => {
+       // console.log(error);
+    } */));
   }
 }
