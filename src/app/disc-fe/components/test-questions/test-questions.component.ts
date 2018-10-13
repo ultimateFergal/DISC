@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
+
+import {MatStepperModule} from '@angular/material/stepper';
 
 import { TestService } from '../../services/test.service';
+import { Subscription } from 'rxjs';
 
 
 @Component({
@@ -10,11 +14,29 @@ import { TestService } from '../../services/test.service';
 })
 export class TestQuestionsComponent implements OnInit {
 
-  constructor(private testService: TestService) { }
+  isLinear = false;
+  firstFormGroup: FormGroup;
+  secondFormGroup: FormGroup;
+
+  questions: any;// []; // Exercise[];
+  private questionsSubscription: Subscription;
+  
+  constructor(private testService: TestService, private _formBuilder: FormBuilder) { }
 
   ngOnInit() {
-    this.testService.fetchQuestions();
-    console.log('hi');
+    this.questionsSubscription = this.testService.questionsSubscription.subscribe( (questions: any) => {
+      this.questions = questions;
+      console.log('questions');
+      console.log(this.questions);
+    });
+    this.questions = this.testService.fetchQuestions();
+
+        this.firstFormGroup = this._formBuilder.group({
+      firstCtrl: ['', Validators.required]
+    });
+    this.secondFormGroup = this._formBuilder.group({
+      secondCtrl: ['', Validators.required]
+    });
   }
 
 }

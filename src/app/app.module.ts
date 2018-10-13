@@ -18,6 +18,7 @@ import { RouterModule } from '@angular/router';
 import { HeaderComponent } from './components/header/header.component';
 import { SidenavListComponent } from './components/sidenav-list/sidenav-list.component';
 import { InicioComponent } from './components/inicio/inicio.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -35,6 +36,7 @@ import { InicioComponent } from './components/inicio/inicio.component';
     AngularFirestoreModule,
     MaterialModule,
     FlexLayoutModule,
+    ReactiveFormsModule,
     RouterModule.forRoot([
       { path: 'inicio', component: InicioComponent },
       { path: '', redirectTo: 'inicio', pathMatch: 'full' },
