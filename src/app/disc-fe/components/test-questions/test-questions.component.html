@@ -41,36 +41,69 @@
     </div>
 </div>
 
-<mat-horizontal-stepper [linear]="true" #stepper>
-    <mat-step [stepControl]="firstFormGroup">
-      <form [formGroup]="firstFormGroup">
-        <ng-template matStepLabel>Fill out your name</ng-template>
-        <mat-form-field>
-          <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
-        </mat-form-field>
-        <div>
-          <button mat-button matStepperNext>Next</button>
-        </div>
-      </form>
-    </mat-step>
-    <mat-step [stepControl]="secondFormGroup">
-      <form [formGroup]="secondFormGroup">
-        <ng-template matStepLabel>Fill out your address</ng-template>
-        <mat-form-field>
-          <input matInput placeholder="Address" formControlName="secondCtrl" required>
-        </mat-form-field>
-        <div>
-          <button mat-button matStepperPrevious>Back</button>
-          <button mat-button matStepperNext>Next</button>
-        </div>
-      </form>
-    </mat-step>
-    <mat-step>
-      <ng-template matStepLabel>Done</ng-template>
-      You are now done.
-      <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button (click)="stepper.reset()">Reset</button>
-      </div>
-    </mat-step>
-  </mat-horizontal-stepper>
+<form [formGroup]="questionsForm">
+    <mat-horizontal-stepper [linear]="isLinear" #stepperT="" formArrayName="steps" >     
+            
+                <mat-step *ngFor="let stepp of steps?.controls; let i=index" formGroupName="{{i}}" [stepControl]="steps?.get([i])">
+                    <ng-template matStepLabel>Set opciones</ng-template>
+                    <div fxLayout="column" fxLayoutAlign="center center"> 
+                        <div fxLayout="row" fxLayoutAlign="space-around center">                       
+                            <mat-form-field>
+                                <input matInput placeholder="Opción 1" formControlName="o1" readonly>
+                            </mat-form-field>
+                            <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+                                <mat-button-toggle value="M1">M</mat-button-toggle>
+                                <mat-button-toggle value="Me1">Me</mat-button-toggle>
+                            </mat-button-toggle-group> 
+                        </div>
+                        <div fxLayout="row" fxLayoutAlign="space-around center"> 
+                            <mat-form-field>
+                                <input matInput placeholder="Opción 2" formControlName="o2" readonly>
+                            </mat-form-field>
+                            <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+                                <mat-button-toggle value="M1">M</mat-button-toggle>
+                                <mat-button-toggle value="Me1">Me</mat-button-toggle>
+                            </mat-button-toggle-group>
+                        </div>
+                        <div fxLayout="row" fxLayoutAlign="space-around center"> 
+                            <mat-form-field>
+                                <input matInput placeholder="Opción 3" formControlName="o3" readonly>
+                            </mat-form-field>    
+                            <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+                                <mat-button-toggle value="M1">M</mat-button-toggle>
+                                <mat-button-toggle value="Me1">Me</mat-button-toggle>
+                            </mat-button-toggle-group>   
+                        </div>
+                        <div fxLayout="row" fxLayoutAlign="space-around center">  
+                            <mat-form-field>
+                                <input matInput placeholder="Opción 4" formControlName="o4" readonly>
+                            </mat-form-field>
+                            <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+                                <mat-button-toggle value="M1">M</mat-button-toggle>
+                                <mat-button-toggle value="Me1">Me</mat-button-toggle>
+                            </mat-button-toggle-group>
+                        </div>
+                    </div>
+<!--                     <mat-list *ngFor="let stepp222 of questions[i]">
+                        <mat-list-item>{{ stepp222.s1 }}</mat-list-item>
+                        <mat-divider></mat-divider>
+                        <mat-list-item>{{ stepp222.s2 }}</mat-list-item>
+                        <mat-divider></mat-divider>
+                        <mat-list-item>{{ stepp222.s3 }}</mat-list-item>
+                        <mat-divider></mat-divider>
+                        <mat-list-item>{{ stepp222.s4 }}</mat-list-item>
+                        <mat-divider></mat-divider>
+                    </mat-list> -->
+                    <div>
+                    <button mat-button matStepperNext>Next</button>
+                    </div>
+                </mat-step>
+        
+    </mat-horizontal-stepper>
+</form>
+
+
+  <br>Dirty: {{ questionsForm.dirty }}
+<br>Touched: {{ questionsForm.touched }}
+<br>Valid: {{ questionsForm.valid }}
+<br>Value: {{ questionsForm.value | json }}
