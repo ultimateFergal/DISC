@@ -73,8 +73,10 @@ export class TestQuestionsComponent implements OnInit {
       o2: objItem[1].qs,
       o3: objItem[2].qs,
       o4: objItem[3].qs,
-      // chbM: '',
-      // chbMe: '',
+      r1: 'M1',
+      r2: 'Me1',
+      r3: 'Me1',
+      r4: 'M1',
     })
   }
 
